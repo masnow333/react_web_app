@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { Nav } from "./components/Nav";
+import React, { useState } from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import "normalize.css";
+import "./App.css";
+import { Home } from "./components/Home";
+import { Svgs } from "./components/Svgs";
+
+const App = () => {
+	const [home, setHome] = useState(true);
+
+	return (
+		<>
+			<Nav setHome={setHome} home={home} />
+			<Svgs />
+			{home === true ? <Home /> : <h2>Contact Me</h2>}
+		</>
+	);
+};
 
 export default App;
