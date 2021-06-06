@@ -1,7 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React/* , { useState } */ from "react";
+
+import { Span } from "./Span";
 
 export const Home = () => {
-	const things = [
+	// const [listThings, setListThings] = useState(0);
+
+	const listOfValues = [
 		"Web developer",
 		"Web designer",
 		"Tea lover",
@@ -12,27 +16,28 @@ export const Home = () => {
 
 	const svgs = ["laptop", "pencil", "tea", "book", "glases", "mando"];
 
-	const [listThings, setListThings] = useState(0);
-
-	useEffect(() => {
-		setTimeout(() => {
-			if (listThings !== things.length - 1) {
-				setListThings(listThings + 1);
-			} else {
+	/* useEffect(() => {
+		let counter = 0;
+		const svgChange = setInterval(() => {
+			if (counter === listOfValues.length - 1) {
 				setListThings(0);
+				counter = 0;
+			} else {
+				setListThings((e) => e + 1);
+				counter++;
 			}
-			console.log(things[listThings], svgs[listThings]);
 		}, 3000);
-	});
+		return () => clearInterval(svgChange);
+	}, []); */
 
 	return (
 		<>
 			<h2>
 				Hi, I'm Jonathan a <br />
-				<span>{things[listThings]}</span>
+				<Span value={listOfValues}/>
 			</h2>
 			<svg className="homeImage" viewBox="0 0 512 512">
-				<use href={"#" + svgs[listThings]} />
+				<use href={"#" + svgs[0]} />
 			</svg>
 		</>
 	);
