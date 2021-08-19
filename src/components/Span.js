@@ -6,7 +6,7 @@ export const Span = ({stopTwinkle:stop}) => {
 	const [twinkle, setTwinkle] = useState(true);
 
 	useEffect(() => {
-		if(stop){
+		if(!stop){
 			const interval = setInterval(() => {
 				setTwinkle(e => !e)
 			}, 500);
@@ -14,7 +14,7 @@ export const Span = ({stopTwinkle:stop}) => {
 				clearInterval(interval);
 			}
 		}else{
-			setTwinkle(true)
+			setTwinkle(false);
 		}		
 	}, [stop])
 	

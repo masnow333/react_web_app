@@ -11,10 +11,17 @@ export const Word = ({ value, changeWord, maxLength, nextWord }) => {
     const [stopTwinkle, setStopTwinkle] = useState(true)
     const [writeWord, setWriteWord] = useState(false)
     const [reverseWord, setReverseWord] = useState('') 
+
+    const stop = () => {
+        setTimeout(() => {
+            setWriteWord(false)
+            setStopTwinkle(true)
+        }, 3000);
+    }
     
     useEffect(() => {
-        if (!writeWord) {
-            const interval = setInterval(() => {
+        const interval = setTimeout(() => {
+            if (!writeWord) {
                 if (word.length === 0) {
                     changeWord(e => {
                         console.log(e, 'position')
@@ -29,22 +36,18 @@ export const Word = ({ value, changeWord, maxLength, nextWord }) => {
                 }else{
                     setWord(e => e.substring(0, e.length - 1))
                 }
-            }, 300);
-            return () => {
-                clearInterval(interval)
-            }
-        }else{
-            const interval = setInterval(() => {
+            }else{
                 if (word.length === value.length) {
-                    setWriteWord(false)
+                    setStopTwinkle(false)
+                    stop()
                 }else{
                     setWord(e => e + reverseWord[reverseWord.length -1])
                     setReverseWord(e => e.substring(0, e.length - 1))
                 }
-            }, 300);
-            return () => {
-                clearInterval(interval)
             }
+        }, !writeWord ? 50 : 300);
+        return () => {
+            clearTimeout(interval)
         }
     }, [writeWord, word, reverseWord])
 
