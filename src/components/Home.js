@@ -1,10 +1,12 @@
-import React/* , { useState } */ from "react";
+import React , { useState, useEffect } from "react";
 
-import { Span } from "./Span";
+//import { Span } from "./Span";
+import { Word } from "./Word";
 
 export const Home = () => {
-	// const [listThings, setListThings] = useState(0);
 
+	const [position, setPosition] = useState(0)
+	
 	const listOfValues = [
 		"Web developer",
 		"Web designer",
@@ -13,31 +15,33 @@ export const Home = () => {
 		"Student",
 		"Player",
 	];
+	
+	const [nextWord, setNextWord] = useState(listOfValues[position + 1])
+
+	useEffect(() => {
+		if (position === listOfValues.length - 1) {
+			setNextWord(listOfValues[0])
+		}else{
+			setNextWord(listOfValues[position + 1])
+		}
+	}, [position])
+	
+	console.log(nextWord, 'nextWord');
+
+	console.log("Home", position);
 
 	const svgs = ["laptop", "pencil", "tea", "book", "glases", "mando"];
 
-	/* useEffect(() => {
-		let counter = 0;
-		const svgChange = setInterval(() => {
-			if (counter === listOfValues.length - 1) {
-				setListThings(0);
-				counter = 0;
-			} else {
-				setListThings((e) => e + 1);
-				counter++;
-			}
-		}, 3000);
-		return () => clearInterval(svgChange);
-	}, []); */
+	const maxLength = listOfValues.length -1;
 
 	return (
 		<>
 			<h2>
 				Hi, I'm Jonathan a <br />
-				<Span value={listOfValues}/>
+				<Word value={listOfValues[position]} changeWord={setPosition} maxLength={maxLength} nextWord={nextWord}/>
 			</h2>
 			<svg className="homeImage" viewBox="0 0 512 512">
-				<use href={"#" + svgs[0]} />
+				<use href={"#" + svgs[position]} />
 			</svg>
 		</>
 	);

@@ -1,21 +1,12 @@
-.writeWord {
-	position: relative;
+span {
 	display: inline-block;
-	height: 60px;
-}
-
-.writeWord::after {
-	content: "";
-	position: absolute;
-	width: 0.5rem;
-	height: 120%;
 	background-color: #fff;
-	right: -8px;
-	bottom: -15px;
-	display: inline-block;
-	animation: transitionTransparent 1s infinite linear;
+	height: 1.2em;
+	width: 0.5rem;
+	margin-bottom: -0.2em;
+	margin-left: -2rem;
 }
 
-.twinkle::after {
-	background-color: transparent;
+.twinkle{
+	opacity: 0;
 }
