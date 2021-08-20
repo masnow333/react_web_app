@@ -4,19 +4,16 @@ import { Span } from './Span'
 import './Word.css'
 
 export const Word = ({ value, changeWord, maxLength, nextWord }) => {
-    console.log(nextWord)
 
     
     const [word, setWord] = useState(value);
-    const [stopTwinkle, setStopTwinkle] = useState(true)
+    const [stopTwinkle, setStopTwinkle] = useState(false)
     const [writeWord, setWriteWord] = useState(false)
     const [reverseWord, setReverseWord] = useState('') 
 
     const stop = () => {
-        setTimeout(() => {
-            setWriteWord(false)
-            setStopTwinkle(true)
-        }, 3000);
+        setWord(e => e.substring(0, e.length - 1))
+        setStopTwinkle(true)
     }
     
     useEffect(() => {
@@ -24,7 +21,6 @@ export const Word = ({ value, changeWord, maxLength, nextWord }) => {
             if (!writeWord) {
                 if (word.length === 0) {
                     changeWord(e => {
-                        console.log(e, 'position')
                         if(e === maxLength){
                             return 0
                         }else{
@@ -34,12 +30,18 @@ export const Word = ({ value, changeWord, maxLength, nextWord }) => {
                     setReverseWord(nextWord.split("").reverse().join(""))                   
                     setWriteWord(true)
                 }else{
-                    setWord(e => e.substring(0, e.length - 1))
+                    if (word.length === value.length) {
+                        setTimeout(() => {
+                            stop()
+                        }, 3000)
+                    }else{
+                        stop()
+                    }
                 }
             }else{
                 if (word.length === value.length) {
+                    setWriteWord(false)
                     setStopTwinkle(false)
-                    stop()
                 }else{
                     setWord(e => e + reverseWord[reverseWord.length -1])
                     setReverseWord(e => e.substring(0, e.length - 1))

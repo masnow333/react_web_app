@@ -3,8 +3,9 @@ import React, { useState } from "react";
 
 import "normalize.css";
 import "./App.css";
-import { Home } from "./components/Home";
-import { Svgs } from "./components/Svgs";
+import { Home } from "./components/home/Home";
+import { Svgs } from "./components/home/Svgs";
+import { Contact } from "./components/contact/Contact";
 
 const App = () => {
 	const [home, setHome] = useState(true);
@@ -13,7 +14,7 @@ const App = () => {
 		<>
 			<Nav setHome={setHome} home={home} />
 			<Svgs />
-			{home === true ? <Home /> : <h2>Contact Me</h2>}
+			{home === true ? <Home /> : <Contact /> }
 		</>
 	);
 };

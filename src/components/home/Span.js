@@ -19,6 +19,6 @@ export const Span = ({stopTwinkle:stop}) => {
 	}, [stop])
 	
 	return (
-		<span className={twinkle ? 'twinkle' : ''}></span>
+		<span className={(twinkle ? 'twinkle' : '') + ' lineSpan'}></span>
 	)
 };

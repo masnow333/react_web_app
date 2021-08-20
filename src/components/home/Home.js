@@ -25,10 +25,6 @@ export const Home = () => {
 			setNextWord(listOfValues[position + 1])
 		}
 	}, [position])
-	
-	console.log(nextWord, 'nextWord');
-
-	console.log("Home", position);
 
 	const svgs = ["laptop", "pencil", "tea", "book", "glases", "mando"];
 
