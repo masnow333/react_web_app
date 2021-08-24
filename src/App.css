@@ -43,8 +43,11 @@
 h2 {
 	font-size: 60px;
 	color: #fff;
-	margin: 20vh auto 0 auto;
+	margin: 10vh auto 0 auto;
 	text-align: center;
+	background-color: rgba(0, 0, 0, 0.5);
+	padding: 50px;
+	border-radius: 30px;
 }
 
 .principal {
@@ -54,6 +57,14 @@ h2 {
 .homeImage {
 	fill: #fff;
 	width: 150px;
+}
+
+.wrapper{
+	width: 100%;
+	z-index: 100;
+	display: grid;
+	justify-items: center;
+	align-items: flex-start;
 }
 
 @keyframes off {

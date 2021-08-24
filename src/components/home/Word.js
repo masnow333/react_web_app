@@ -3,7 +3,7 @@ import { Span } from './Span'
 
 import './Word.css'
 
-export const Word = ({ value, changeWord, maxLength, nextWord }) => {
+export const Word = ({ value, changeWord, maxLength, nextWord, setSlide }) => {
 
     
     const [word, setWord] = useState(value);
@@ -20,15 +20,19 @@ export const Word = ({ value, changeWord, maxLength, nextWord }) => {
         const interval = setTimeout(() => {
             if (!writeWord) {
                 if (word.length === 0) {
-                    changeWord(e => {
-                        if(e === maxLength){
-                            return 0
-                        }else{
-                            return e + 1
-                        }
-                    }) 
-                    setReverseWord(nextWord.split("").reverse().join(""))                   
-                    setWriteWord(true)
+                    setSlide(true)
+                    setTimeout(() => {
+                        changeWord(e => {
+                            if(e === maxLength){
+                                return 0
+                            }else{
+                                return e + 1
+                            }
+                        }) 
+                        setReverseWord(nextWord.split("").reverse().join(""))                   
+                        setWriteWord(true)
+                        setSlide(false)
+                    }, 2000);
                 }else{
                     if (word.length === value.length) {
                         setTimeout(() => {
@@ -47,7 +51,7 @@ export const Word = ({ value, changeWord, maxLength, nextWord }) => {
                     setReverseWord(e => e.substring(0, e.length - 1))
                 }
             }
-        }, !writeWord ? 50 : 300);
+        }, !writeWord ? 50 : 200);
         return () => {
             clearTimeout(interval)
         }
