@@ -1,6 +1,5 @@
 import React , { useState, useEffect } from "react";
 
-//import { Span } from "./Span";
 import { Word } from "./Word";
 
 export const Home = ({position, setPosition, listOfValues, setSlide}) => {
@@ -15,19 +14,14 @@ export const Home = ({position, setPosition, listOfValues, setSlide}) => {
 		}
 	}, [position])
 
-	const svgs = ["laptop", "pencil", "tea", "book", "glases", "mando"];
-
 	const maxLength = listOfValues.length -1;
 
 	return (
-		<>
+		<div className="home">
 			<h2>
 				Hi, I'm Jonathan a <br />
 				<Word value={listOfValues[position]} changeWord={setPosition} maxLength={maxLength} nextWord={nextWord} setSlide={setSlide}/>
 			</h2>
-			<svg className="homeImage" viewBox="0 0 512 512">
-				<use href={"#" + svgs[position]} />
-			</svg>
-		</>
+		</div>
 	);
 };

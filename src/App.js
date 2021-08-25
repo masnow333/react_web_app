@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import "normalize.css";
 import "./App.css";
 import { Home } from "./components/home/Home";
-import { Svgs } from "./components/home/Svgs";
 import { Contact } from "./components/contact/Contact";
 import { Background } from "./components/Background";
 
@@ -29,7 +28,6 @@ const App = () => {
 			<Background position={position} slide={slide} />
 			<div className="wrapper">
 				<Nav setHome={setHome} home={home} />
-				<Svgs />
 				{home === true ? <Home position={position} setPosition={setPosition} listOfValues={listOfValues} setSlide={setSlide} /> : <Contact /> }
 			</div>
 		</>

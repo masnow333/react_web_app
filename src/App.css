@@ -3,6 +3,7 @@
 	position: absolute;
 	width: 100%;
 	top: 0;
+	background-color: rgba(0, 0, 0, 0.5);
 }
 
 .navbar > ul {
@@ -40,14 +41,16 @@
 	animation: off 0.2s linear;
 }
 
-h2 {
+h2{
 	font-size: 60px;
 	color: #fff;
-	margin: 10vh auto 0 auto;
 	text-align: center;
+	border-radius: 30px;
+}
+
+.home > h2 {
 	background-color: rgba(0, 0, 0, 0.5);
 	padding: 50px;
-	border-radius: 30px;
 }
 
 .principal {
@@ -64,7 +67,7 @@ h2 {
 	z-index: 100;
 	display: grid;
 	justify-items: center;
-	align-items: flex-start;
+	align-content: center;
 }
 
 @keyframes off {
