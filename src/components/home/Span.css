@@ -10,3 +10,17 @@ span.lineSpan {
 .twinkle{
 	opacity: 0;
 }
+
+@media screen and (max-width: 768px) {
+	span.lineSpan{
+		width: 0.3rem;
+		margin-left: -1rem;
+	}
+}
+
+@media screen and (max-width: 400px) {
+	span.lineSpan{
+		margin-left: -.6rem;
+		width: 0.1rem;
+	}
+}

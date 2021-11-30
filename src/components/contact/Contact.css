@@ -13,6 +13,7 @@
 .contact{
     margin: 0 auto 50px auto;
     width: 100%;
+    background-color: transparent;
 }
 
 .contactPage{
@@ -23,4 +24,39 @@
     align-content: center;
     flex-wrap: wrap;
     border-radius: 30px;
+}
+
+@media screen and (max-width: 1100px) {
+	.phone, .mail{
+        font-size: 1.2rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .phone, .mail{
+        font-size: 1.2rem;
+        width: 100%;
+        margin: 10px 0;
+        font-size: 1.2rem;
+    }
+
+    .contactPage{
+        padding: 20px;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        width: 80%;
+    }
+    .contact{
+        font-size: 40px;
+        margin: 0 auto 20px auto;
+        padding: 0px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .contact{
+		font-size: 30px !important; 
+    }
+
+    
 }
